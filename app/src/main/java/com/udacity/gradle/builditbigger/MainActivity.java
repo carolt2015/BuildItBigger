@@ -6,12 +6,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView textView;
     private ProgressBar spinner;
 
     @Override
@@ -19,20 +17,9 @@ public class MainActivity extends AppCompatActivity {
 
        super.onCreate(savedInstanceState);
        setContentView(R.layout.activity_main);
-
-       textView = (TextView) findViewById(R.id.jokes_text_view);
-       textView.setVisibility(View.INVISIBLE);
-
        spinner = (ProgressBar) findViewById(R.id.progressBar1);
 
       }
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        spinner.setVisibility(View.INVISIBLE);
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -57,5 +44,12 @@ public class MainActivity extends AppCompatActivity {
 
         spinner.setVisibility(View.VISIBLE);
         new FetchJokeTask().execute(this);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        spinner.setVisibility(View.INVISIBLE);
     }
   }
